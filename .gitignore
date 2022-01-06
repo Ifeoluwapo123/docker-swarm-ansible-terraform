@@ -1,0 +1,10 @@
+script.txt
+
+.terraform/
+
+# Terraform state
+terraform.tfstate
+terraform.tfstate.backup
+
+# Terraform variables
+terraform.tfvars
