@@ -3,6 +3,7 @@
   hosts: masters
   vars:
     ansible_ssh_private_key_file: "/Users/damilolaadenusi/Downloads/mai-key.pem"
+    ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
   gather_facts: False
   remote_user: ec2-user
   tasks:
@@ -31,6 +32,7 @@
     token: "{{ hostvars[groups['masters'][0]]['worker_token']['stdout'] }}"
     master: "{{ hostvars[groups['masters'][0]]['inventory_hostname'] }}"
     ansible_ssh_private_key_file: "/Users/damilolaadenusi/Downloads/mai-key.pem"
+    ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
   tasks:
     - name: Join Swarm Cluster as a Worker
       command: docker swarm join --token {{ token }} {{ master }}:2377
